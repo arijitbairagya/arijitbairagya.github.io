@@ -1,130 +1,799 @@
-<!DOCTYPE html>
-<html>
+<!doctype html>
+<html lang="en">
 <head>
-<title>Arijit Bairagya</title>
-    <meta name="viewport" content="width=device-width"/>
-    <meta name="description" content="Arijit Bairagya ... Details "/>
-    <meta charset="UTF-8">
-    <link rel="stylesheet" href="style.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Arijit Bairagya - Solution Architect (Modern v4 — Maturity Ladder)</title>
+  <style>
+    :root {
+      --bg1: #eef4fb;
+      --bg2: #f8fbff;
+      --paper: #ffffff;
+      --text: #1a2230;
+      --muted: #5f6d80;
+      --line: #d5e0ed;
+      --brand: #0e5ea8;
+      --brand-2: #2e84d1;
+      --soft: #eaf2fc;
+      --chip: #edf3fa;
+      --good: #0b7b45;
+      --maxw: 1040px;
+    }
+
+    * { box-sizing: border-box; }
+
+    html, body {
+      margin: 0;
+      padding: 0;
+      color: var(--text);
+      font-family: "Segoe UI", "Calibri", "Trebuchet MS", Arial, sans-serif;
+      background:
+        radial-gradient(circle at 10% 10%, #e3eefc 0%, transparent 35%),
+        radial-gradient(circle at 90% 5%, #e6f5ff 0%, transparent 28%),
+        linear-gradient(180deg, var(--bg1) 0%, var(--bg2) 40%, #f7f9fc 100%);
+      line-height: 1.45;
+    }
+
+    .page {
+      max-width: var(--maxw);
+      margin: 22px auto;
+      padding: 16px;
+    }
+
+    .card {
+      background: var(--paper);
+      border: 1px solid var(--line);
+      border-radius: 16px;
+      overflow: hidden;
+      box-shadow: 0 10px 32px rgba(19, 39, 68, 0.08);
+    }
+
+    .header {
+      background: linear-gradient(120deg, var(--brand) 0%, var(--brand-2) 56%, #66abe4 100%);
+      color: #fff;
+      padding: 26px 28px 20px;
+    }
+
+    .name {
+      margin: 0;
+      font-size: 36px;
+      line-height: 1.08;
+      letter-spacing: 0.2px;
+    }
+
+    .title {
+      margin: 8px 0 0;
+      font-size: 18px;
+      font-weight: 600;
+      opacity: 0.95;
+    }
+
+    .contact {
+      margin-top: 14px;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px 16px;
+      font-size: 14px;
+    }
+
+    .contact a {
+      color: #fff;
+      text-decoration: none;
+      border-bottom: 1px dashed rgba(255, 255, 255, 0.55);
+    }
+
+    .content {
+      display: grid;
+      grid-template-columns: 1.05fr 2fr;
+    }
+
+    .left,
+    .right {
+      padding: 22px 24px;
+    }
+
+    .left {
+      background: #fcfdff;
+      border-right: 1px solid var(--line);
+    }
+
+    h2 {
+      margin: 0 0 12px;
+      font-size: 14px;
+      letter-spacing: 1.05px;
+      text-transform: uppercase;
+      color: var(--brand);
+    }
+
+    section { margin-bottom: 22px; }
+
+    p {
+      margin: 0;
+      font-size: 14px;
+    }
+
+    ul {
+      margin: 0;
+      padding-left: 18px;
+    }
+
+    li {
+      margin-bottom: 6px;
+      font-size: 14px;
+    }
+
+    .subtle {
+      color: var(--muted);
+      font-size: 13px;
+      margin-top: 6px;
+    }
+
+    .chip-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+
+    .chip {
+      display: inline-block;
+      font-size: 12px;
+      border-radius: 999px;
+      padding: 5px 10px;
+      border: 1px solid #dbe6f2;
+      background: var(--chip);
+      color: #273347;
+      white-space: nowrap;
+    }
+
+    .kpi-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 10px;
+      margin: 16px 0 4px;
+    }
+
+    .kpi {
+      border: 1px solid #c7d9ee;
+      background: #f3f8ff;
+      border-radius: 10px;
+      padding: 10px;
+      min-height: 76px;
+    }
+
+    .kpi .num {
+      font-size: 22px;
+      font-weight: 700;
+      color: #16467a;
+      line-height: 1;
+      margin-bottom: 6px;
+    }
+
+    .kpi .lbl {
+      font-size: 12px;
+      color: #355271;
+      line-height: 1.25;
+    }
+
+    .skill-highlight {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 8px;
+    }
+
+    .skill-item {
+      border: 1px solid var(--line);
+      border-radius: 10px;
+      padding: 10px;
+      background: #ffffff;
+    }
+
+    .skill-head {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      gap: 10px;
+    }
+
+    .skill-name {
+      margin: 0;
+      font-size: 13px;
+      font-weight: 700;
+      color: #203048;
+    }
+
+    .skill-level {
+      font-size: 11px;
+      color: #3a5576;
+      background: #e9f2ff;
+      border: 1px solid #cfe2fb;
+      border-radius: 999px;
+      padding: 1px 8px;
+      white-space: nowrap;
+    }
+
+    .bar {
+      margin-top: 8px;
+      height: 7px;
+      background: #edf2f8;
+      border-radius: 999px;
+      overflow: hidden;
+    }
+
+    .bar > span {
+      display: block;
+      height: 100%;
+      background: linear-gradient(90deg, #2275c4 0%, #58a4e8 100%);
+      border-radius: 999px;
+    }
+
+    .exp-item {
+      margin-bottom: 18px;
+      padding-bottom: 14px;
+      border-bottom: 1px dashed var(--line);
+    }
+
+    .exp-item:last-child {
+      margin-bottom: 0;
+      padding-bottom: 0;
+      border-bottom: 0;
+    }
+
+    .role-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-bottom: 2px;
+    }
+
+    .role {
+      margin: 0;
+      font-size: 16px;
+      font-weight: 700;
+      color: #1a2739;
+    }
+
+    .org {
+      margin: 0;
+      font-size: 14px;
+      font-weight: 600;
+      color: #32445d;
+    }
+
+    .date {
+      font-size: 12px;
+      color: #3f5d80;
+      border-radius: 999px;
+      border: 1px solid #cfe0f4;
+      background: var(--soft);
+      padding: 2px 8px;
+      white-space: nowrap;
+    }
+
+    .experience-map {
+      position: relative;
+      margin-top: 8px;
+      padding-left: 16px;
+    }
+
+    .experience-map:before {
+      content: "";
+      position: absolute;
+      top: 2px;
+      bottom: 2px;
+      left: 4px;
+      width: 2px;
+      background: #c8dbef;
+    }
+
+    .map-item {
+      position: relative;
+      margin-bottom: 10px;
+      padding-left: 14px;
+      font-size: 13px;
+      color: #2f445f;
+    }
+
+    .map-item:before {
+      content: "";
+      position: absolute;
+      left: -1px;
+      top: 6px;
+      width: 8px;
+      height: 8px;
+      border-radius: 999px;
+      background: #2f82cc;
+      border: 2px solid #e7f2ff;
+    }
+
+    /* ── Horizontal Maturity Ladder ── */
+    .ladder {
+      margin-top: 10px;
+      display: flex;
+      align-items: stretch;
+      gap: 0;
+    }
+
+    .rung {
+      flex: 1;
+      position: relative;
+      padding: 14px 10px 12px;
+      text-align: center;
+      border-top: 3px solid #b8d3f0;
+      border-bottom: 1px solid #cfe2f4;
+      background: linear-gradient(180deg, #f6fbff 0%, #eef6ff 100%);
+      transition: background 0.2s;
+    }
+
+    .rung:first-child {
+      border-left: 1px solid #cfe2f4;
+      border-radius: 8px 0 0 8px;
+    }
+
+    .rung:last-child {
+      border-right: 1px solid #cfe2f4;
+      border-radius: 0 8px 8px 0;
+      border-top-color: #0f5ea8;
+      background: linear-gradient(180deg, #dceeff 0%, #e6f3ff 100%);
+    }
+
+    /* arrow connector between rungs */
+    .rung:not(:last-child):after {
+      content: "";
+      position: absolute;
+      top: 50%;
+      right: -13px;
+      transform: translateY(-50%);
+      width: 0;
+      height: 0;
+      border-top: 13px solid transparent;
+      border-bottom: 13px solid transparent;
+      border-left: 13px solid #c5daf0;
+      z-index: 2;
+    }
+
+    .rung:not(:last-child):before {
+      content: "";
+      position: absolute;
+      top: 50%;
+      right: -11px;
+      transform: translateY(-50%);
+      width: 0;
+      height: 0;
+      border-top: 12px solid transparent;
+      border-bottom: 12px solid transparent;
+      border-left: 12px solid #eef6ff;
+      z-index: 3;
+    }
+
+    .rung:last-child:before {
+      content: "";
+      position: absolute;
+      top: 50%;
+      right: -11px;
+      transform: translateY(-50%);
+      width: 0;
+      height: 0;
+      border-top: 12px solid transparent;
+      border-bottom: 12px solid transparent;
+      border-left: 12px solid #e6f3ff;
+      z-index: 3;
+    }
+
+    .rung-num {
+      display: inline-block;
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 0.5px;
+      color: #1f5191;
+      background: #deeeff;
+      border: 1px solid #b8d3ef;
+      border-radius: 999px;
+      padding: 1px 7px;
+      margin-bottom: 6px;
+    }
+
+    .rung:last-child .rung-num {
+      background: #c5e0ff;
+      border-color: #93bde6;
+      color: #0d3f71;
+    }
+
+    .rung-title {
+      display: block;
+      font-size: 12px;
+      font-weight: 700;
+      color: #17304a;
+      line-height: 1.2;
+      margin-bottom: 6px;
+    }
+
+    .rung-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 4px;
+      justify-content: center;
+    }
+
+    .rung-tag {
+      font-size: 10px;
+      background: rgba(255,255,255,0.8);
+      border: 1px solid #ccdff0;
+      border-radius: 999px;
+      padding: 2px 6px;
+      color: #2b4462;
+      white-space: nowrap;
+    }
+
+    .ladder-caption {
+      margin-top: 8px;
+      font-size: 11px;
+      color: #5b7394;
+      text-align: right;
+    }
+
+    .two-col {
+      columns: 2;
+      column-gap: 20px;
+      padding-left: 18px;
+    }
+
+    .small { font-size: 13px; color: #304156; }
+
+    @media (max-width: 980px) {
+      .content {
+        grid-template-columns: 1fr;
+      }
+
+      .left {
+        border-right: 0;
+        border-bottom: 1px solid var(--line);
+      }
+
+      .kpi-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .ladder {
+        flex-direction: column;
+        gap: 8px;
+      }
+
+      .rung {
+        border-radius: 10px !important;
+        border-left: 3px solid #b8d3f0 !important;
+        border-top: 1px solid #cfe2f4 !important;
+      }
+
+      .rung:last-child {
+        border-left-color: #0f5ea8 !important;
+      }
+
+      .rung:not(:last-child):after,
+      .rung:not(:last-child):before,
+      .rung:last-child:before {
+        display: none;
+      }
+
+      .name { font-size: 32px; }
+    }
+
+    @media print {
+      @page { size: A4; margin: 10mm; }
+
+      html, body { background: #fff; }
+
+      .page {
+        margin: 0;
+        max-width: 100%;
+        padding: 0;
+      }
+
+      .card {
+        border: 0;
+        box-shadow: none;
+        border-radius: 0;
+      }
+
+      .header,
+      .kpi,
+      .rung,
+      .rung-num,
+      .rung-tag,
+      .chip,
+      .date {
+        -webkit-print-color-adjust: exact;
+        print-color-adjust: exact;
+      }
+
+      .exp-item,
+      section,
+      .skill-item {
+        break-inside: avoid;
+      }
+
+      a {
+        color: inherit;
+        text-decoration: none;
+      }
+    }
+  </style>
 </head>
-<body id="top">
-<div id="cv" class="instaFade">
-	<div class="mainDetails">
-		<div id="headshot" class="quickFade">
-			<img src="images/arijit_old.jpg" alt="Arijit" />
-		</div>
-		
-		<div id="name">
-			<h1 class="quickFade delayTwo">Arijit Bairagya</h1>
-			<br>
-			<h3 class="quickFade delayThree">Assistant Consultant</h3>
-			<h3 class="quickFade delayThree">Tata Consultancy Services</h3>
-		</div>
-		
-		<div id="contactDetails" class="quickFade delayFour">
-			<ul>
-				<li> <a href="mailto:arijitbairagya@gmail.com" target="_blank"> <i class="fa fa-envelope-square" style="font-size:24px;padding-right: 10px;"></i>arijitbairagya@gmail.com</a></li>
-				<li><a href="mailto:arijit.bairagya@tcs.com" target="_blank" > <i class="fa fa-envelope-square" style="font-size:24px;padding-right: 10px;"></i>arijit.bairagya@tcs.com</a></li>
-                <li><i class="fa fa-mobile-phone" style="font-size:24px;padding-right: 20px;"></i>+852 6581 6501 </i></li>
-                <li><i class="fa fa-whatsapp" style="font-size:24px;padding-right: 10px;"></i>+91 9748 704 234</li>
-				<li> <a href="https://github.com/arijitbairagya"> <i class="fa fa-git" style="font-size:24px;padding-right: 12px;" ></i></a>
-                    <a href="https://www.linkedin.com/in/abairagya/"> <i class="fa fa-linkedin-square" style="font-size:24px"></i> </a>
-                </li>
-                <li></li>
-			</ul>
-		</div>
-		<div class="clear"></div>
-	</div>
-	
-	<div id="mainArea" class="quickFade delayFive">
-		<section>
-			<article>
-				<div class="sectionTitle">
-					<h1>Personal Profile</h1>
-				</div>
-				
-				<div class="sectionContent">
-					<p>11+ years of experience in designing and developing Enterprise level applications. </p>
-				</div>
-			</article>
-			<div class="clear"></div>
-		</section>
-		
-		
-		<section>
-			<div class="sectionTitle">
-				<h1>Experience</h1>
-			</div>
-			
-			<div class="sectionContent">
-				<article>
-					<h3>Assistant Consultant at Tata Consultancy Services</h3>
-					<p class="subDetails">October 2010 - Present</p>
-					<p></p>
-				</article>
-				
-				<article>
-					<h3>Senior Software Enginer at WIPRO Technologies</h3>
-					<p class="subDetails">June 2007 - October 2010</p>
-					<p></p>
-				</article>
-				
-				<!-- <article>
-					<h2>Job Title at Company</h2>
-					<p class="subDetails">October 2004 - December 2006</p>
-					<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec ultricies massa et erat luctus hendrerit. Curabitur non consequat enim. Vestibulum bibendum mattis dignissim. Proin id sapien quis libero interdum porttitor.</p>
-				</article> -->
-			</div>
-			<div class="clear"></div>
-		</section>
-		
-		
-		<section>
-			<div class="sectionTitle">
-				<h1>Key Skills</h1>
-			</div>
-			
-			<div class="sectionContent">
-				<ul class="keySkills">
-					<li>JAVA SE 6 & 8</li>
-					<li>Spring Boot</li>
-					<li>Spring Cloud</li>
-					<li>AWS(serverless)</li>
-					<li>Node.js</li>
-					<li>MongoDB/DynamoDB</li>
-					<li>MySQL</li>
-					<li>IOT using RaspberryPi</li>
-					<li>PWA</li>
-					<li>Message Brokers(Mosquitto/RabbitMQ)</li>
-				</ul>
-			</div>
-			<div class="clear"></div>
-		</section>
-		
-		
-		<section>
-			<div class="sectionTitle">
-				<h1>Education</h1>
-			</div>
-			
-			<div class="sectionContent">
-				<article>
-					<h3>B-Tech in Computer Science & Technology</h3>
-					<p class="subDetails">2004 - 2007</p>
-					<p>Kalyani Government Engineering College under West Bengal University Of Technology, India</p>
-				</article>
-				
-				<!-- <article>
-					<h2>College/University</h2>
-					<p class="subDetails">Qualification</p>
-					<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec ultricies massa et erat luctus hendrerit. Curabitur non consequat enim.</p>
-				</article> -->
-			</div>
-			<div class="clear"></div>
-		</section>
-		
-	</div>
-</div>
+<body>
+  <main class="page">
+    <article class="card">
+      <header class="header">
+        <h1 class="name">Arijit Bairagya</h1>
+        <p class="title">Solution Architect | Integration, Cloud Modernization, and Platform Reliability</p>
+        <div class="contact">
+          <span>Hong Kong</span>
+          <span>Phone: +852 5301 0473</span>
+          <span>Email: arijit.bairagya@gmail.com</span>
+          <a href="https://www.linkedin.com/in/abairagya" target="_blank" rel="noreferrer">LinkedIn</a>
+          <a href="https://arijitbairagya.github.io" target="_blank" rel="noreferrer">Portfolio</a>
+        </div>
+
+        <div class="kpi-grid">
+          <div class="kpi">
+            <div class="num">18+</div>
+            <div class="lbl">Years in enterprise software delivery</div>
+          </div>
+          <div class="kpi">
+            <div class="num">6+</div>
+            <div class="lbl">Years in solution architecture leadership</div>
+          </div>
+          <div class="kpi">
+            <div class="num">5+</div>
+            <div class="lbl">Industry domains delivered</div>
+          </div>
+          <div class="kpi">
+            <div class="num">2x</div>
+            <div class="lbl">Microsoft Azure certifications</div>
+          </div>
+        </div>
+      </header>
+
+      <div class="content">
+        <aside class="left">
+          <section>
+            <h2>Executive Summary</h2>
+            <p>
+              Architect-level technologist with deep experience in integration patterns, cloud-native design, and
+              modernization of mission-critical systems. Strong in translating business strategy into scalable architectures,
+              secure APIs, resilient event flows, and delivery governance. Currently building AI engineering capability
+              with focus on enterprise GenAI integration patterns and responsible adoption.
+            </p>
+          </section>
+
+          <section>
+            <h2>Key Skills Spotlight</h2>
+            <div class="skill-highlight">
+              <div class="skill-item">
+                <div class="skill-head">
+                  <p class="skill-name">Integration Architecture (REST, SOAP, Messaging, Event-Driven)</p>
+                  <span class="skill-level">Expert</span>
+                </div>
+                <div class="bar"><span style="width: 95%"></span></div>
+              </div>
+              <div class="skill-item">
+                <div class="skill-head">
+                  <p class="skill-name">Cloud Solution Design (Azure and AWS)</p>
+                  <span class="skill-level">Expert</span>
+                </div>
+                <div class="bar"><span style="width: 92%"></span></div>
+              </div>
+              <div class="skill-item">
+                <div class="skill-head">
+                  <p class="skill-name">Microservices, DDD, and API Lifecycle Governance</p>
+                  <span class="skill-level">Advanced</span>
+                </div>
+                <div class="bar"><span style="width: 90%"></span></div>
+              </div>
+              <div class="skill-item">
+                <div class="skill-head">
+                  <p class="skill-name">Reliability Engineering (Containerization, CI/CD, Observability)</p>
+                  <span class="skill-level">Advanced</span>
+                </div>
+                <div class="bar"><span style="width: 88%"></span></div>
+              </div>
+              <div class="skill-item">
+                <div class="skill-head">
+                  <p class="skill-name">AI Learning Track (RAG, LLM APIs, AI Architecture Patterns)</p>
+                  <span class="skill-level">In Progress</span>
+                </div>
+                <div class="bar"><span style="width: 55%"></span></div>
+              </div>
+            </div>
+          </section>
+
+          <section>
+            <h2>Maturity Ladder</h2>
+            <p class="subtle">How 18 years of depth compounds from technical foundations up to strategic leadership.</p>
+            <div class="ladder">
+
+              <div class="rung">
+                <span class="rung-num">STAGE 1</span>
+                <span class="rung-title">Foundations</span>
+                <div class="rung-tags">
+                  <span class="rung-tag">Java / Node.js</span>
+                  <span class="rung-tag">Spring Boot</span>
+                  <span class="rung-tag">REST / SOAP</span>
+                  <span class="rung-tag">SQL + NoSQL</span>
+                  <span class="rung-tag">Messaging</span>
+                </div>
+              </div>
+
+              <div class="rung">
+                <span class="rung-num">STAGE 2</span>
+                <span class="rung-title">Execution</span>
+                <div class="rung-tags">
+                  <span class="rung-tag">Microservices</span>
+                  <span class="rung-tag">CI/CD</span>
+                  <span class="rung-tag">Docker / K8s</span>
+                  <span class="rung-tag">Event-Driven</span>
+                  <span class="rung-tag">TestContainers</span>
+                </div>
+              </div>
+
+              <div class="rung">
+                <span class="rung-num">STAGE 3</span>
+                <span class="rung-title">Platform</span>
+                <div class="rung-tags">
+                  <span class="rung-tag">Azure APIM</span>
+                  <span class="rung-tag">Logic Apps</span>
+                  <span class="rung-tag">DDD</span>
+                  <span class="rung-tag">API Lifecycle</span>
+                  <span class="rung-tag">Observability</span>
+                </div>
+              </div>
+
+              <div class="rung">
+                <span class="rung-num">STAGE 4</span>
+                <span class="rung-title">Strategy</span>
+                <div class="rung-tags">
+                  <span class="rung-tag">Architecture Governance</span>
+                  <span class="rung-tag">ARB Reviews</span>
+                  <span class="rung-tag">Vendor Eval</span>
+                  <span class="rung-tag">AI Adoption</span>
+                  <span class="rung-tag">Roadmap Design</span>
+                </div>
+              </div>
+
+            </div>
+            <p class="ladder-caption">Each stage is production-proven across 5+ industry domains.</p>
+          </section>
+
+          <section>
+            <h2>Technology Stack</h2>
+            <ul class="two-col">
+              <li><strong>Architecture and Integration:</strong> Microservices, DDD, API-first design, REST, SOAP, OpenAPI, event-driven architecture</li>
+              <li><strong>Cloud Platforms:</strong> Azure (APIM, Functions, Logic Apps, Monitor), AWS (Lambda, API Gateway, messaging services)</li>
+              <li><strong>Languages and Frameworks:</strong> Java, Node.js, C, Spring MVC, Spring Boot, Spring Cloud, Hibernate</li>
+              <li><strong>Messaging and Streaming:</strong> Kafka, RabbitMQ, IBM MQ, AMQP, MQTT (Mosquitto)</li>
+              <li><strong>Data Platforms:</strong> SQL Server, Oracle, MySQL, MongoDB, DynamoDB</li>
+              <li><strong>Containers and Platform Engineering:</strong> Docker, Kubernetes, OpenShift</li>
+              <li><strong>DevSecOps and Delivery:</strong> GitLab CI/CD, Jenkins, automated testing with TestContainers</li>
+              <li><strong>Observability and Operations:</strong> ELK/EFK logging, production support, reliability tuning</li>
+            </ul>
+          </section>
+
+          <section>
+            <h2>AI Learning and Application Focus</h2>
+            <ul>
+              <li>Actively learning enterprise AI architecture patterns including RAG, prompt engineering, and LLM gateway design.</li>
+              <li>Building practical skills in Azure AI ecosystem and responsible AI controls for enterprise adoption.</li>
+              <li>Applying architecture discipline to AI initiatives: security, governance, scalability, and cost-aware design.</li>
+            </ul>
+          </section>
+
+          <section>
+            <h2>Certifications</h2>
+            <ul>
+              <li>Microsoft Certified: Azure Solutions Architect Expert</li>
+              <li>Microsoft Certified: Azure Administrator Associate</li>
+            </ul>
+          </section>
+
+          <section>
+            <h2>Education</h2>
+            <p class="small"><strong>Bachelor of Technology, Computer Science</strong></p>
+            <p class="small">Kalyani Government Engineering College, West Bengal, India</p>
+            <p class="small">2007</p>
+          </section>
+        </aside>
+
+        <section class="right">
+          <section>
+            <h2>Experience Map</h2>
+            <div class="experience-map">
+              <div class="map-item"><strong>2007 - 2010:</strong> Wipro - Senior Developer</div>
+              <div class="map-item"><strong>2010 - 2022:</strong> Tata Consultancy Services - Technical Lead / Solution Architect</div>
+              <div class="map-item"><strong>2022 - 2023:</strong> IBM Hong Kong - Solution Architect</div>
+              <div class="map-item"><strong>2023 - Present:</strong> Infosys Hong Kong - Solution Architect</div>
+            </div>
+          </section>
+
+          <section>
+            <h2>Professional Experience</h2>
+
+            <div class="exp-item">
+              <div class="role-row">
+                <div>
+                  <p class="role">Solution Architect</p>
+                  <p class="org">Infosys, Hong Kong</p>
+                </div>
+                <span class="date">Nov 2023 - Present</span>
+              </div>
+              <ul>
+                <li>Own architecture and end-to-end support for critical airline Flight Operations applications.</li>
+                <li>Led CCSI platform redesign to improve availability, observability, and maintainability.</li>
+                <li>Re-platformed solution components to strengthen scalability and operational resilience.</li>
+                <li>Aligned architecture decisions with business priorities and long-term modernization goals.</li>
+              </ul>
+            </div>
+
+            <div class="exp-item">
+              <div class="role-row">
+                <div>
+                  <p class="role">Solution Architect</p>
+                  <p class="org">IBM, Hong Kong</p>
+                </div>
+                <span class="date">May 2022 - Jul 2023</span>
+              </div>
+              <ul>
+                <li>Delivered architecture for AXA initiatives spanning digital platforms, HR SaaS, and cloud migration.</li>
+                <li>Presented on-prem and cloud solution options to Architecture Review Board for project approvals.</li>
+                <li>Led SaaS vendor assessments and integration pattern selection for enterprise adoption.</li>
+                <li>Designed end-to-end security controls with data classification and compliance alignment.</li>
+              </ul>
+            </div>
+
+            <div class="exp-item">
+              <div class="role-row">
+                <div>
+                  <p class="role">Technical Lead / Solution Architect</p>
+                  <p class="org">Tata Consultancy Services (India, France, Hong Kong)</p>
+                </div>
+                <span class="date">Oct 2010 - Apr 2022</span>
+              </div>
+              <ul>
+                <li>Designed event-driven architecture for responsible-gambling platform using AMQP and MQTT.</li>
+                <li>Delivered high-scale architecture across finance and aviation workloads.</li>
+                <li>Built microservice testing framework with TestContainers and CI/CD pipeline integration.</li>
+                <li>Led cross-functional teams through impact analysis, design, build, and production rollout.</li>
+              </ul>
+            </div>
+
+            <div class="exp-item">
+              <div class="role-row">
+                <div>
+                  <p class="role">Senior Developer</p>
+                  <p class="org">Wipro, India</p>
+                </div>
+                <span class="date">Jun 2007 - Oct 2010</span>
+              </div>
+              <ul>
+                <li>Developed and supported large shipping-domain enterprise software used globally.</li>
+                <li>Contributed to maintenance, payroll, crew, and replication modules in Java ecosystem.</li>
+              </ul>
+            </div>
+          </section>
+
+          <section>
+            <h2>Domain Coverage</h2>
+            <div class="chip-row">
+              <span class="chip">Aviation</span>
+              <span class="chip">Banking</span>
+              <span class="chip">Insurance</span>
+              <span class="chip">Commercial Finance</span>
+              <span class="chip">Shipping</span>
+              <span class="chip">Entertainment</span>
+            </div>
+          </section>
+        </section>
+      </div>
+    </article>
+  </main>
 </body>
 </html>
